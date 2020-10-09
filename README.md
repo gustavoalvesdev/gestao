@@ -12,3 +12,9 @@ Este é um Sistema de Gestão para micro e pequenas empresas desenvolvido em PHP
 - Produtos
 - Ordens de Serviço
 - Etc...
+
+![](screenshot1.PNG)
+![](screenshot2.PNG)
+![](screenshot3.PNG)
+![](screenshot4.PNG)
+![](screenshot5.PNG)
