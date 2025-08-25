@@ -17,7 +17,7 @@ define('INCLUDE_PATH','http://localhost/gestao/');
 define('HOST','localhost');
 define('USER','root');
 define('PASSWORD','');
-define('DATABASE','gestao');
+define('DATABASE','gestao2');
 
 $data['sucesso'] = true;
 $data['mensagem'] = '';

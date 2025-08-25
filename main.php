@@ -45,98 +45,23 @@
 				
 
 					<a <?php selecionadoMenu('ver-pagamentos'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>ver-pagamentos">Ver Pagamentos</a>
-					<a <?php selecionadoMenu('fluxo-de-caixa'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>fluxo-de-caixa">Fluxo de Caixa</a>
 					<a <?php selecionadoMenu('contas-a-pagar'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>contas-a-pagar">Contas a Pagar</a>
-					<a <?php selecionadoMenu('controle-financeiro'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>ver-pagamentos">Contas a Receber</a>
-					<a <?php selecionadoMenu('controle-financeiro'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>ver-pagamentos">Plano de Contas</a>
-					<a <?php selecionadoMenu('controle-financeiro'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>ver-pagamentos">Vencimentos</a>
-					<a <?php selecionadoMenu('controle-financeiro'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>ver-pagamentos">Competências</a>
-					<a <?php selecionadoMenu('controle-financeiro'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>ver-pagamentos">Contas Bancárias</a>
-					<a <?php selecionadoMenu('controle-financeiro'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>ver-pagamentos">Transferências</a>
-					<a <?php selecionadoMenu('controle-financeiro'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>ver-pagamentos">Recibos</a>
-			
-				<h2><i class="fas fa-box-open"></i> Estoque</h2>
-				
-				
-					<a <?php selecionadoMenu('cadastrar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>cadastrar-clientes">Produtos</a>
-					<a <?php selecionadoMenu('gerenciar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>gerenciar-clientes">Serviços</a>
-					<a <?php selecionadoMenu('gerenciar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>gerenciar-clientes">Movimentações</a>
-					<a <?php selecionadoMenu('gerenciar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>gerenciar-clientes">Armazenamento</a>
-					<a <?php selecionadoMenu('gerenciar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>gerenciar-clientes">Alertas</a>
-				
+					<a <?php selecionadoMenu('controle-financeiro'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>ver-pagamentos">Ver Pagamentos</a>
 
-				<h2><i class="fas fa-paste"></i> Ordem de Serviço</h2>
-				
-				
-					<a <?php selecionadoMenu('cadastrar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>cadastrar-clientes">Imprimir O.S.</a>
-					<a <?php selecionadoMenu('gerenciar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>gerenciar-clientes">Status</a>
-			
-
-				<h2><i class="fas fa-tag"></i> Orçamento</h2>
-				
-				
-					<a <?php selecionadoMenu('cadastrar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>cadastrar-clientes">Status</a>
-					<a <?php selecionadoMenu('gerenciar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>gerenciar-clientes">Links</a>
-					<a <?php selecionadoMenu('gerenciar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>gerenciar-clientes">Histórico</a>
-		
-
-				<h2><i class="fas fa-phone"></i> Contato</h2>
-				
-				
-					<a <?php selecionadoMenu('cadastrar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>cadastrar-clientes">Clientes</a>
-					<a <?php selecionadoMenu('gerenciar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>gerenciar-clientes">Fornecedores</a>
-					<a <?php selecionadoMenu('gerenciar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>gerenciar-clientes">Funcionários</a>
-					<a <?php selecionadoMenu('gerenciar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>gerenciar-clientes">Prestadores de Serviços</a>
-			
-
-				<h2><i class="fas fa-calendar-alt"></i> Agenda</h2>
-				
-				
-					<a <?php selecionadoMenu('cadastrar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>cadastrar-clientes">Lembretes</a>
-					<a <?php selecionadoMenu('gerenciar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>gerenciar-clientes">Compromissos</a>
-					<a <?php selecionadoMenu('gerenciar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>gerenciar-clientes">Clientes</a>
-					<a <?php selecionadoMenu('gerenciar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>gerenciar-clientes">Sala de Espera</a>
-		
-			
-
-				<h2><i class="fas fa-chart-pie"></i> Relatórios</h2>
-				
-				
-					<a <?php selecionadoMenu('cadastrar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>cadastrar-clientes">Financeiro</a>
-					<a <?php selecionadoMenu('gerenciar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>gerenciar-clientes">Estoque</a>
-					<a <?php selecionadoMenu('gerenciar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>gerenciar-clientes">Ordem de Serviço</a>
-					<a <?php selecionadoMenu('gerenciar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>gerenciar-clientes">Orçamento</a>
-					<a <?php selecionadoMenu('gerenciar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>gerenciar-clientes">Relatórios Prontos</a>
-					<a <?php selecionadoMenu('gerenciar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>gerenciar-clientes">Personalizar</a>
 
 
 				<h2><i class="fas fa-users"></i> Usuários</h2>
 		
 				
 					<a <?php selecionadoMenu('adicionar-usuario'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>adicionar-usuario">Cadastrar Usuário</a>
-					<a <?php selecionadoMenu('editar-usuario'); ?> <?php verificaPermissaoMenu(0); ?> href="<?php echo INCLUDE_PATH ?>editar-usuario">Gerenciar Usuários</a>
+					<a <?php selecionadoMenu('editar-usuario'); ?> <?php verificaPermissaoMenu(0); ?> href="<?php echo INCLUDE_PATH ?>editar-usuario">Editar Usuários</a>
 		
-
-				<h2><i class="fas fa-truck"></i> Fornecedores</h2>
-		
-				
-					<a <?php selecionadoMenu('adicionar-usuario'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>adicionar-usuario">Cadastrar Fornecedor</a>
-					<a <?php selecionadoMenu('adicionar-usuario'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>adicionar-usuario">Gerenciar Fornecedores</a>
-		
-	
 				<h2><i class="fas fa-user-tag"></i> Clientes</h2>
 				
 				
 					<a <?php selecionadoMenu('cadastrar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>cadastrar-clientes">Cadastrar Clientes</a>
 					<a <?php selecionadoMenu('gerenciar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>gerenciar-clientes">Gerenciar Clientes</a>
 
-					
-				<h2><i class="fas fa-piggy-bank"></i> Vendas</h2>
-				
-					<a <?php selecionadoMenu('cadastrar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>cadastrar-clientes">Cadastrar Venda</a>
-					<a <?php selecionadoMenu('gerenciar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>gerenciar-clientes">Gerenciar Vendas</a>
-					<a <?php selecionadoMenu('gerenciar-clientes'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>gerenciar-clientes">Parcelas a Receber</a>
-			
 
 			</div><!--items-menu-->
 			</div><!--menu-wraper-->

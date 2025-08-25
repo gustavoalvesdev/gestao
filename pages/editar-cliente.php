@@ -77,13 +77,16 @@
 				$numero_parcelas = $_POST['parcelas'];
 				$status = 0;
 				$vencimentoOriginal = $_POST['vencimento'];
-				for($I = 0; $i < $numero_parcelas; $i++) {
+				for($i = 0; $i < $numero_parcelas; $i++) {
 					$vencimento = strtotime($vencimentoOriginal) + (($i * $intervalo) * (60*60*24));
 					$sql = MySql::conectar()->prepare("INSERT INTO `tb_admin.financeiro` VALUES(null, ?, ?, ?, ?, ?)");
-					$sql->execute(array($cliente_id, $nome, $valor, date('Y-m-d', $vencimento), 0));
+					if($sql->execute(array($cliente_id, $nome, $valor, date('Y-m-d', $vencimento), 0))) {
+						Painel::alert('sucesso', 'O pagamento foi inserido com sucesso!');
+					} else {
+						Painel::alert('erro', 'Falha no Pagamento!');	
+					}
 				}
 
-				Painel::alert('sucesso', 'O pagamento foi inserido com sucesso!');
 			}
 		?>
 

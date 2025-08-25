@@ -24,7 +24,7 @@
 		define('HOST','localhost');
 		define('USER','root');
 		define('PASSWORD','');
-		define('DATABASE','gestao');
+		define('DATABASE','gestao2');
 		
 	} else if (ENVIRONMENT === 'production') {
 		define('INCLUDE_PATH','https://gustavoalvesdev.com.br/');
