@@ -21,8 +21,11 @@
 		}
 
 		public static function cadastrarUsuario($user,$senha,$imagem,$nome,$cargo){
+
+			$senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
 			$sql = MySql::conectar()->prepare("INSERT INTO `tb_admin.usuarios` VALUES (null,?,?,?,?,?)");
-			$sql->execute(array($user,$senha,$imagem,$nome,$cargo));
+			$sql->execute(array($user,$senhaHash,$imagem,$nome,$cargo));
 		}
 
 	}

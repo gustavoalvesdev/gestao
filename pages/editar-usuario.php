@@ -8,7 +8,7 @@
 				//Enviei o meu formulário.
 				
 				$nome = $_POST['nome'];
-				$senha = $_POST['password'];
+				$senha = password_hash($_POST['password'], PASSWORD_DEFAULT);
 				$imagem = $_FILES['imagem'];
 				$imagem_atual = $_POST['imagem_atual'];
 				$usuario = new Usuario();
