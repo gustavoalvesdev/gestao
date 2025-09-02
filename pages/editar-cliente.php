@@ -66,33 +66,31 @@
 	<form method="POST">
 
 		<?php 
-			if (isset($_POST['acao_pagamento'])) {
 
+			if (isset($_POST['acao_pagamento'])) {
 				$cliente_id = $id;
-				$nome = $_POST['nome_pagamento'];
-				//$valor = str_replace('.','',$_POST['valor]);
-				//$valor = str_replace(',','.',$valor);
+				$nome = $_POST['nome_pagto'];	
+				//$valor = str_replace('.', '', $_POST['valor']);
+				//$valor = str_replace(',', '.', $valor);
 				$valor = $_POST['valor'];
-				$intervalo = $_POST['intervalo'];
+				$vencimento = $_POST['vencimento'];
 				$numero_parcelas = $_POST['parcelas'];
+				$intervalo = $_POST['intervalo'];
 				$status = 0;
 				$vencimentoOriginal = $_POST['vencimento'];
-				for($i = 0; $i < $numero_parcelas; $i++) {
-					$vencimento = strtotime($vencimentoOriginal) + (($i * $intervalo) * (60*60*24));
-					$sql = MySql::conectar()->prepare("INSERT INTO `tb_admin.financeiro` VALUES(null, ?, ?, ?, ?, ?)");
-					if($sql->execute(array($cliente_id, $nome, $valor, date('Y-m-d', $vencimento), 0))) {
-						Painel::alert('sucesso', 'O pagamento foi inserido com sucesso!');
-					} else {
-						Painel::alert('erro', 'Falha no Pagamento!');	
-					}
+				for ($i = 0; $i < $numero_parcelas; $i++) {
+					$vencimento = strtotime($vencimentoOriginal) + (($i * $intervalo) * (60 * 60 * 24));
+					$sql = MySql::conectar()->prepare("INSERT INTO `tb_admin.financeiro` VALUES (null,?,?,?,?,?)");
+					$sql->execute(array($cliente_id, $nome, $valor, date('Y-m-d', $vencimento), 0));
 				}
 
+				Painel::alert('sucesso', 'Pagamento(s) inserido(s) com sucesso');
 			}
 		?>
 
 		<div class="form-group">
 			<label>Nome do Pagamento:</label>
-			<input type="text" name="nome_pagamento" />
+			<input type="text" name="nome_pagto" />
 		</div>
 		<!-- form-group -->
 
@@ -116,7 +114,7 @@
 
 		<div class="form-group">
 			<label>Vencimento:</label>
-			<input type="date" name="vencimento" />
+			<input type="text" name="vencimento" />
 		</div>
 		<!-- form-group -->
 

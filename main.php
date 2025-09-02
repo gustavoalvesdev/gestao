@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="<?= ICONS_URL; ?>">
 	<link rel="stylesheet" href="<?= INCLUDE_PATH ?>css/sweetalert2.min.css">
 	<link href="<?= INCLUDE_PATH ?>css/style.css" rel="stylesheet" />
+	<link href="<?= INCLUDE_PATH ?>Zebra_Datepicker/css/default/zebra_datepicker.min.css" rel="stylesheet" />
 </head>
 	<body>
 		<base base="<?= INCLUDE_PATH ?>">
@@ -109,6 +110,7 @@
 		<script src="<?= INCLUDE_PATH ?>js/ajax.js"></script>
 		<script src="<?= INCLUDE_PATH ?>js/constants.js"></script>
 		<script src="<?= INCLUDE_PATH ?>js/accordion.js"></script>
+		<script src="<?= INCLUDE_PATH ?>Zebra_Datepicker/zebra_datepicker.min.js"></script>
 		<?php Painel::loadJS(array('clientes.js'),'gerenciar-clientes'); ?>
 		<?php Painel::loadJS(array('controleFinanceiro.js'),'editar-cliente'); ?>
 	</body>

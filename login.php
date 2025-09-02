@@ -48,15 +48,12 @@
 					$sql->execute();
 
 					if($sql->rowCount() == 1){
-
-
 						$info = $sql->fetch();
 						//Logamos com sucesso.
-						
-
-						var_dump($info);
 
 						if (password_verify($password, $info['password'])) {
+
+							
 							$_SESSION['login'] = true;
 							$_SESSION['user'] = $user;
 							$_SESSION['password'] = $password;
@@ -70,6 +67,10 @@
 							}
 							header('Location: '.INCLUDE_PATH);
 							die();
+						} else {
+							//Falhou
+							echo '<div class="erro-box"><i class="fa fa-times"></i> Usuário ou senha incorretos!</div>';
+
 						}
 					}else{
 						//Falhou
