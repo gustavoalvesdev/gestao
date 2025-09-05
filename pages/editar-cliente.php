@@ -78,13 +78,19 @@
 				$intervalo = $_POST['intervalo'];
 				$status = 0;
 				$vencimentoOriginal = $_POST['vencimento'];
-				for ($i = 0; $i < $numero_parcelas; $i++) {
-					$vencimento = strtotime($vencimentoOriginal) + (($i * $intervalo) * (60 * 60 * 24));
-					$sql = MySql::conectar()->prepare("INSERT INTO `tb_admin.financeiro` VALUES (null,?,?,?,?,?)");
-					$sql->execute(array($cliente_id, $nome, $valor, date('Y-m-d', $vencimento), 0));
+
+				if (strtotime($vencimentoOriginal) < time()) {
+					Painel::alert('erro', 'Você selecionou uma data anterior à data de hoje ('.date('d/m').')!');
+				} else {
+					for ($i = 0; $i < $numero_parcelas; $i++) {
+						$vencimento = strtotime($vencimentoOriginal) + (($i * $intervalo) * (60 * 60 * 24));
+						$sql = MySql::conectar()->prepare("INSERT INTO `tb_admin.financeiro` VALUES (null,?,?,?,?,?)");
+						$sql->execute(array($cliente_id, $nome, $valor, date('Y-m-d', $vencimento), 0));
+					}
+	
+					Painel::alert('sucesso', 'Pagamento(s) inserido(s) com sucesso');
 				}
 
-				Painel::alert('sucesso', 'Pagamento(s) inserido(s) com sucesso');
 			}
 		?>
 
@@ -126,17 +132,42 @@
 
 	</form>
 
-	<h2><i class="fas fa-id-card"></i> Pagamentos Pendentes: </h2>
+	<h2><i class="fas fa-id-card"></i> Pagamentos Pendentes de <?= $cliente['nome'] ?>: </h2>
 
 	<div class="wraper-table">
         <table>
             <tr>
                 <td>Descrição do Pagamento</td>
-                <td>Cliente</td>
                 <td>Valor</td>
                 <td>Vencimento</td>
                 <td>#</td>
             </tr>
+
+			<?php 
+
+				$sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.financeiro` WHERE status = 0 AND cliente_id = ? ORDER BY vencimento ASC");
+				$sql->execute(array($id));
+				$pendentes = $sql->fetchAll();
+
+				foreach($pendentes as $pendente) {
+					
+			?>
+				<?php 
+					$hoje = new DateTime();
+					$vencimento = new DateTime($pendente['vencimento']);
+
+					$style = ($vencimento < $hoje) ? "background-color:#F75353; color:white" : "";
+				?>
+				<tr style="<?= $style ?>">
+					<td><?= $pendente['nome'] ?></td>
+					<td><?= $pendente['valor'] ?></td>
+					<td><?= date('d/m/Y', strtotime($pendente['vencimento'])) ?></td>
+					<td>#</td>
+				</tr>						
+
+			<?php
+				}
+			?>
 
         </table>
 	</div>
