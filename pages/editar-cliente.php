@@ -63,7 +63,7 @@
 
 	<h2><i class="fas fa-pencil-alt"></i> Adicionar Pagamentos</h2>
 
-	<form method="POST">
+	<form method="POST" id="pagto-section">
 
 		<?php 
 
@@ -79,7 +79,10 @@
 				$status = 0;
 				$vencimentoOriginal = $_POST['vencimento'];
 
-				if (strtotime($vencimentoOriginal) < time()) {
+				$hoje = new DateTime('today');
+				$vencimento = new DateTime($vencimentoOriginal);
+
+				if ($vencimento < $hoje) {
 					Painel::alert('erro', 'Você selecionou uma data anterior à data de hoje ('.date('d/m').')!');
 				} else {
 					for ($i = 0; $i < $numero_parcelas; $i++) {
@@ -92,6 +95,8 @@
 				}
 
 			}
+
+			
 		?>
 
 		<div class="form-group">
@@ -132,6 +137,16 @@
 
 	</form>
 
+	<?php 
+
+		if (isset($_GET['pago'])) {
+			$sql = MySql::conectar()->prepare("UPDATE `tb_admin.financeiro` SET status = 1 WHERE id = ?");
+			$sql->execute(array($_GET['pago']));
+			Painel::alert('sucesso', 'O pagamento foi quitado com sucesso!');
+		}
+
+	?>
+
 	<h2><i class="fas fa-id-card"></i> Pagamentos Pendentes de <?= $cliente['nome'] ?>: </h2>
 
 	<div class="wraper-table">
@@ -140,7 +155,8 @@
                 <td>Descrição do Pagamento</td>
                 <td>Valor</td>
                 <td>Vencimento</td>
-                <td>#</td>
+                <td>Enviar e-mail</td>
+                <td>Marcar como pago</td>
             </tr>
 
 			<?php 
@@ -153,7 +169,7 @@
 					
 			?>
 				<?php 
-					$hoje = new DateTime();
+					$hoje = new DateTime('today');
 					$vencimento = new DateTime($pendente['vencimento']);
 
 					$style = ($vencimento < $hoje) ? "background-color:#F75353; color:white" : "";
@@ -162,7 +178,8 @@
 					<td><?= $pendente['nome'] ?></td>
 					<td><?= $pendente['valor'] ?></td>
 					<td><?= date('d/m/Y', strtotime($pendente['vencimento'])) ?></td>
-					<td>#</td>
+					<td><a class="btn edit" href="#"><i class="fa fa-envelope"></i> E-mail</a></td>
+					<td><a style="background:#00bfa5" class="btn" href="<?= INCLUDE_PATH ?>editar-cliente?id=<?= $id ?>&pago=<?= $pendente['id'] ?>"><i class="fas fa-money-bill-wave"></i> Pago</a></td>
 				</tr>						
 
 			<?php
@@ -178,11 +195,29 @@
         <table>
             <tr>
                 <td>Descrição do Pagamento</td>
-                <td>Cliente</td>
                 <td>Valor</td>
                 <td>Vencimento</td>
-                <td>#</td>
             </tr>
+
+			<?php 
+
+				$sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.financeiro` WHERE status = 1 AND cliente_id = ? ORDER BY vencimento ASC");
+				$sql->execute(array($id));
+				$pendentes = $sql->fetchAll();
+
+				foreach($pendentes as $pendente) {
+					
+			?>
+
+				<tr>
+					<td><?= $pendente['nome'] ?></td>
+					<td><?= $pendente['valor'] ?></td>
+					<td><?= date('d/m/Y', strtotime($pendente['vencimento'])) ?></td>
+				</tr>						
+
+			<?php
+				}
+			?>
 
         </table>
 	</div>
