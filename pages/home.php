@@ -4,19 +4,37 @@
 		<div class="box-metricas">
 			<div class="box-metrica-single">
 				<div class="box-metrica-wraper">
-					<h2>Produtos Vendidos</h2>
+					<h2>Clientes</h2>
 					<p>0</p>
 				</div><!--box-metrica-wraper-->
 			</div><!--box-metrica-single-->
 			<div class="box-metrica-single">
 				<div class="box-metrica-wraper">
-					<h2>Receitas</h2>
+					<h2>Fornecedores</h2>
 					<p>R$ 0,00</p>
 				</div><!--box-metrica-wraper-->
 			</div><!--box-metrica-single-->
 			<div class="box-metrica-single">
 				<div class="box-metrica-wraper">
-					<h2>Despesas</h2>
+					<h2>Usuários</h2>
+					<p>R$ 0,00</p>
+				</div><!--box-metrica-wraper-->
+			</div><!--box-metrica-single-->
+			<div class="box-metrica-single" style="background: #455a64">
+				<div class="box-metrica-wraper">
+					<h2>Produtos</h2>
+					<p>0</p>
+				</div><!--box-metrica-wraper-->
+			</div><!--box-metrica-single-->
+			<div class="box-metrica-single" style="background-color: #333">
+				<div class="box-metrica-wraper">
+					<h2>Pedidos</h2>
+					<p>R$ 0,00</p>
+				</div><!--box-metrica-wraper-->
+			</div><!--box-metrica-single-->
+			<div class="box-metrica-single" style="background-color: #00bfa5">
+				<div class="box-metrica-wraper">
+					<h2>Despachados</h2>
 					<p>R$ 0,00</p>
 				</div><!--box-metrica-wraper-->
 			</div><!--box-metrica-single-->

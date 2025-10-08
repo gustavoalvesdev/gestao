@@ -1,28 +1,3 @@
-<?php
-	if(isset($_COOKIE['lembrar'])){
-		
-		$user = $_COOKIE['user'];
-		$password = $_COOKIE['password'];
-
-		$sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.usuarios` WHERE user = ?");
-		$sql->execute(array($user));
-
-		if ($sql->rowCount() == 1) {
-			$info = $sql->fetch();
-
-			if (password_verify($password, $info['senha'])) {
-				$_SESSION['login'] = true;
-				$_SESSION['user'] = $user;
-				$_SESSION['cargo'] = $info['cargo'];
-				$_SESSION['nome'] = $info['nome'];
-				$_SESSION['img'] = $info['img'];
-				header('Location: ' . INCLUDE_PATH);
-				die();
-			}
-		}
-
-	}
-?>
 <!DOCTYPE html>
 <html>
 <head>
