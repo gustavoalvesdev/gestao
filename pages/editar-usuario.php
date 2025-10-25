@@ -70,7 +70,7 @@
 		</div><!--form-group-->
 		<div class="form-group">
 			<label>Senha:</label>
-			<input type="password" name="password" value="<?php echo $_SESSION['password']; ?>" required>
+			<input type="password" name="password" required>
 		</div><!--form-group-->
 
 		<div class="form-group">

@@ -4,7 +4,7 @@
 <div class="box-content">
 	<h2><i class="fa fa-pencil"></i>Cadastrar Clientes</h2>
 
-	<form class="form-clientes" action="<?= INCLUDE_PATH; ?>ajax/form-clientes.php" method="post" enctype="multipart/form-data">
+	<form class="form-clientes" action="<?= INCLUDE_PATH; ?>ajax/form-clientes.php" method="POST" enctype="multipart/form-data">
 		
 		<div class="form-group">
 			<label>Nome:</label>

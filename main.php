@@ -38,30 +38,6 @@
 			</div><!--box-usuario-->
 			<div class="items-menu">
 
-				<h2>Funcionalidades</h2>
-
-				<a <?php selecionadoMenu('empresa'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>"><i class="fa fa-home"></i> Dashboard</a>
-
-				<a <?php selecionadoMenu('empresa'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>empresa"><i class="fa fa-search"></i> Pesquisar</a>
-
-				<a <?php selecionadoMenu('empresa'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>empresa"><i class="fa fa-users"></i> Clientes</a>
-
-				<a <?php selecionadoMenu('empresa'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>empresa"><i class="fa fa-warehouse"></i> Fornecedores</a>
-
-				<a <?php selecionadoMenu('empresa'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>empresa"><i class="fa fa-box-open"></i> Produtos</a>
-
-				<a <?php selecionadoMenu('empresa'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>empresa"><i class="fa fa-dolly"></i> Estoque</a>
-
-				<a <?php selecionadoMenu('empresa'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>empresa"><i class="fa fa-gift"></i> Pedidos</a>
-
-				<a <?php selecionadoMenu('empresa'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>empresa"><i class="fa fa-check-circle"></i> Ord. de Serviço</a>
-
-				<a <?php selecionadoMenu('empresa'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>empresa"><i class="fa fa-print"></i> Relatórios</a>
-
-				<a <?php selecionadoMenu('empresa'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>empresa"><i class="fa fa-user"></i> Usuários</a>
-
-				<a <?php selecionadoMenu('empresa'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>?loggout"><i class="fa fa-times-circle"></i> Sair</a>
-
 				<h2><i class="fas fa-cog"></i> Configurações</h2>
 				
 			
@@ -71,8 +47,6 @@
 				
 
 					<a <?php selecionadoMenu('ver-pagamentos'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>ver-pagamentos">Ver Pagamentos</a>
-					<a <?php selecionadoMenu('contas-a-pagar'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>contas-a-pagar">Contas a Pagar</a>
-					<a <?php selecionadoMenu('controle-financeiro'); ?> <?php verificaPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH ?>ver-pagamentos">Ver Pagamentos</a>
 
 
 

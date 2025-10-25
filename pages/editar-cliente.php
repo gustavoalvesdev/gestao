@@ -165,27 +165,36 @@
 				$sql->execute(array($id));
 				$pendentes = $sql->fetchAll();
 
-				foreach($pendentes as $pendente) {
+				 if (count($pendentes) == 0) {
+				 	
+					echo '<tr><td colspan="6"><strong>'.$cliente['nome'].'</strong> não possui pagamentos pendentes</td></tr>';
+
+				 } else {
+
+					foreach($pendentes as $pendente) {
 					
 			?>
-				<?php 
-					$hoje = new DateTime('today');
-					$vencimento = new DateTime($pendente['vencimento']);
+					<?php 
+						$hoje = new DateTime('today');
+						$vencimento = new DateTime($pendente['vencimento']);
 
-					$style = ($vencimento < $hoje) ? "background-color:#F75353; color:white" : "";
-				?>
-				<tr style="<?= $style ?>">
-					<td><?= $pendente['nome'] ?></td>
-					<td><?= $pendente['valor'] ?></td>
-					<td><?= date('d/m/Y', strtotime($pendente['vencimento'])) ?></td>
-					<td><a class="btn edit" href="#"><i class="fa fa-envelope"></i> E-mail</a></td>
-					<td><a style="background:#00bfa5" class="btn" href="<?= INCLUDE_PATH ?>editar-cliente?id=<?= $id ?>&pago=<?= $pendente['id'] ?>"><i class="fas fa-money-bill-wave"></i> Pago</a></td>
-				</tr>						
+						$style = ($vencimento < $hoje) ? "background-color:#F75353; color:white" : "";
+					?>
+					<tr style="<?= $style ?>">
+						<td><?= $pendente['nome'] ?></td>
+						<td><?= $pendente['valor'] ?></td>
+						<td><?= date('d/m/Y', strtotime($pendente['vencimento'])) ?></td>
+						<td><a class="btn edit" href="#"><i class="fa fa-envelope"></i> E-mail</a></td>
+						<td><a style="background:#00bfa5" class="btn" href="<?= INCLUDE_PATH ?>editar-cliente?id=<?= $id ?>&pago=<?= $pendente['id'] ?>"><i class="fas fa-money-bill-wave"></i> Pago</a></td>
+					</tr>						
 
-			<?php
+				<?php
+					}
 				}
 			?>
 
+
+				
         </table>
 	</div>
 
@@ -203,21 +212,28 @@
 
 				$sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.financeiro` WHERE status = 1 AND cliente_id = ? ORDER BY vencimento ASC");
 				$sql->execute(array($id));
-				$pendentes = $sql->fetchAll();
+				$concluidos = $sql->fetchAll();
 
-				foreach($pendentes as $pendente) {
+				if (count($concluidos) == 0) {
+					echo "<tr colspan='3'><td><strong>".$cliente['nome']."</strong> não possui pagamentos concluídos</td></tr>";
+				} else {
+
+					foreach($concluidos as $concluido) {
 					
 			?>
 
 				<tr>
-					<td><?= $pendente['nome'] ?></td>
-					<td><?= $pendente['valor'] ?></td>
-					<td><?= date('d/m/Y', strtotime($pendente['vencimento'])) ?></td>
+					<td><?= $concluido['nome'] ?></td>
+					<td><?= $concluido['valor'] ?></td>
+					<td><?= date('d/m/Y', strtotime($concluido['vencimento'])) ?></td>
 				</tr>						
 
 			<?php
 				}
+			}
 			?>
+
+				
 
         </table>
 	</div>

@@ -16,8 +16,10 @@
 			<!-- overlay -->
 			<?php
 				if(isset($_POST['acao'])){
+
 					$user = $_POST['user'];
 					$password = $_POST['password'];
+
 					$sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.usuarios` WHERE user = :user");
 					$sql->bindValue(':user', $user);
 					$sql->execute();
@@ -28,20 +30,39 @@
 
 						if (password_verify($password, $info['password'])) {
 
-							
+							// Login seguro
+							$_SESSION = []; // limpa sessão antiga
+							session_regenerate_id(true); // regenerar id da sessão
+
 							$_SESSION['login'] = true;
 							$_SESSION['user'] = $user;
-							$_SESSION['password'] = $password;
 							$_SESSION['cargo'] = $info['cargo'];
 							$_SESSION['nome'] = $info['nome']; 
 							$_SESSION['img'] = $info['img'];
-							if(isset($_POST['lembrar'])){
-								setcookie('lembrar',true,time()+(60*60*24),'/');
-								setcookie('user',$user,time()+(60*60*24),'/');
-								setcookie('password',$password,time()+(60*60*24),'/');
-							}
+							$_SESSION['last_activity'] = time();
+
+							// // Lembrar-me (opcional)
+							// if(isset($_POST['lembrar'])){
+								
+							// 	$token = bin2hex(random_bytes(32)); // token aleatório seguro
+							// 	$expires = date('Y-m-d H:i:s', strtotime('+30 days'));
+
+
+							// 	$stmt = MySql::conectar()->prepare("INSERT INTO users_tokens (user_id, token, expires_at) VALUES (:userid, :token, :exp)");
+							// 	$stmt->bindValue(':userid', $info['id']);
+							// 	$stmt->bindValue(':token', $token);
+							// 	$stmt->bindValue(':exp', $expires);
+			
+							// 	setcookie('lembrar', $token, [
+							// 		'expires' => time() + (86400 * 30),
+							// 		'path' => '/',
+							// 		'secure' => false,
+							// 		'httponly' => true, 
+							// 		'samesite' => 'Lax'
+							// 	]);
+							// }
 							header('Location: '.INCLUDE_PATH);
-							die();
+							exit;
 						} else {
 							//Falhou
 							echo '<div class="erro-box"><i class="fa fa-times"></i> Usuário ou senha incorretos!</div>';
@@ -62,10 +83,10 @@
 				<input type="text" name="user" required />
 				<label for="password">SENHA</label><br />
 				<input type="password" name="password" required />
-				<div class="form-group-login">
+				<!-- <div class="form-group-login">
 					<input type="checkbox" name="lembrar" />
 					<label>LEMBRAR-ME</label>
-				</div>
+				</div> -->
 				<input type="submit" name="acao" value="FAZER LOGIN">
 				<div class="clear"></div>
 			</form>

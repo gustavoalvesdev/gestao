@@ -51,7 +51,7 @@
                     ?>
                     <tr style="<?= $style ?>">
                         <td><?= $pendente['nome_conta'] ?></td>
-                        <td><?= $pendente['nome_cliente'] ?></td>
+                        <td><a style="color:#555" href="<?= INCLUDE_PATH ?>editar-cliente?id=<?= $pendente['id_cliente'] ?>"><?= $pendente['nome_cliente'] ?></a></td>
                         <td>R$ <?= $pendente['valor'] ?></td>
                         <td><?= date('d/m/Y', strtotime($pendente['vencimento'])) ?></td>
                         <td><a class="btn edit" href="#"><i class="fa fa-envelope"></i> E-mail</a></td>
@@ -86,12 +86,12 @@
 
 				$sql = MySql::conectar();
                 
-                $query = $sql->query("SELECT f.nome AS nome_conta, c.nome AS nome_cliente, f.valor, f.vencimento  FROM `tb_admin.financeiro` f INNER JOIN `tb_admin.clientes` c WHERE f.`status` = 1 AND f.cliente_id = c.id ORDER BY vencimento ASC");  
+                $query = $sql->query("SELECT c.id AS cliente_id, f.nome AS nome_conta, c.nome AS nome_cliente, f.valor, f.vencimento  FROM `tb_admin.financeiro` f INNER JOIN `tb_admin.clientes` c WHERE f.`status` = 1 AND f.cliente_id = c.id ORDER BY vencimento ASC");  
 
 				$concluidos = $query->fetchAll();
 
                 if (count($concluidos) == 0) {
-                    echo '<td colspan="6">Não há nenhum pagamento concluído</td>';
+                    echo '<td colspan="4">Não há nenhum pagamento concluído</td>';
                 } else {
                     foreach($concluidos as $concluido) {
 					
@@ -99,7 +99,7 @@
             
                     <tr>
                         <td><?= $concluido['nome_conta'] ?></td>
-                        <td><?= $concluido['nome_cliente'] ?></td>
+                        <td><a style="color:#555" href="<?= INCLUDE_PATH ?>editar-cliente?id=<?= $concluido['cliente_id'] ?>"><?= $concluido['nome_cliente'] ?></a></td>
                         <td>R$ <?= $concluido['valor'] ?></td>
                         <td><?= date('d/m/Y', strtotime($concluido['vencimento'])) ?></td>
                     </tr>						
