@@ -74,10 +74,20 @@
 				//$valor = str_replace(',', '.', $valor);
 				$valor = $_POST['valor'];
 				$vencimento = $_POST['vencimento'];
-				$numero_parcelas = $_POST['parcelas'];
-				$intervalo = $_POST['intervalo'];
+
+				if ($_POST['parcelas'] == '') {
+					$numero_parcelas = 1;
+				} else {
+					$numero_parcelas = $_POST['parcelas'];
+				}
+				
+				if (!isset($_POST['intervalo']) || $numero_parcelas == 1 || $numero_parcelas == 0) {
+					$intervalo = 0;
+				} else {
+					$intervalo = $_POST['intervalo'];
+				}
 				$status = 0;
-				$vencimentoOriginal = $_POST['vencimento'];
+				$vencimentoOriginal = $vencimento;
 
 				$hoje = new DateTime('today');
 				$vencimento = new DateTime($vencimentoOriginal);
@@ -184,7 +194,7 @@
 						<td><?= $pendente['nome'] ?></td>
 						<td><?= $pendente['valor'] ?></td>
 						<td><?= date('d/m/Y', strtotime($pendente['vencimento'])) ?></td>
-						<td><a class="btn edit" href="#"><i class="fa fa-envelope"></i> E-mail</a></td>
+						<td><a class="btn edit" href="<?= INCLUDE_PATH ?>?email=<?= $id ?>&parcela=<?= $pendente['id'] ?>"><i class="fa fa-envelope"></i> E-mail</a></td>
 						<td><a style="background:#00bfa5" class="btn" href="<?= INCLUDE_PATH ?>editar-cliente?id=<?= $id ?>&pago=<?= $pendente['id'] ?>"><i class="fas fa-money-bill-wave"></i> Pago</a></td>
 					</tr>						
 

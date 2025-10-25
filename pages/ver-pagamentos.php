@@ -1,5 +1,5 @@
 <div class="box-content">
-	
+
     <?php 
 
 		if (isset($_GET['pago'])) {
@@ -54,7 +54,7 @@
                         <td><a style="color:#555" href="<?= INCLUDE_PATH ?>editar-cliente?id=<?= $pendente['id_cliente'] ?>"><?= $pendente['nome_cliente'] ?></a></td>
                         <td>R$ <?= $pendente['valor'] ?></td>
                         <td><?= date('d/m/Y', strtotime($pendente['vencimento'])) ?></td>
-                        <td><a class="btn edit" href="#"><i class="fa fa-envelope"></i> E-mail</a></td>
+                        <td><a class="btn edit" href="<?= INCLUDE_PATH ?>?email=<?= $pendente['id_cliente'] ?>&parcela=<?= $pendente['id_pagamento'] ?>"><i class="fa fa-envelope"></i> E-mail</a></td>
                         <td><a style="background:#00bfa5" class="btn" href="<?= INCLUDE_PATH ?>ver-pagamentos?pago=<?= $pendente['id_pagamento'] ?>"><i class="fas fa-money-bill-wave"></i> Pago</a></td>
                     </tr>						
 
